@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.techguy.jumpstartapp.MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gosling" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="311dp"
+        android:layout_height="wrap_content"
+        android:layout_x="17dp"
+        android:layout_y="58dp">
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="match_parent"
+            android:textColor="#ffffff"
+            android:layout_height="wrap_content"
+            android:hint="State your car problem" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/speakproblem"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:layout_weight="1"
+        android:layout_x="269dp"
+        android:layout_y="43dp"
+        android:clickable="true"
+        app:backgroundTint="@android:color/background_light"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintLeft_toRightOf="@+id/imageView2"
+        app:layout_constraintRight_toLeftOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:srcCompat="@drawable/speak2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="215dp"
+        android:layout_height="wrap_content"
+        android:layout_x="74dp"
+        android:layout_y="127dp"
+        android:background="@android:color/background_light"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="sans-serif"
+        android:text="JUMPSTART"
+        android:textColor="#FF3ACE2A"
+        android:textSize="20dp" />
+
+</AbsoluteLayout>
