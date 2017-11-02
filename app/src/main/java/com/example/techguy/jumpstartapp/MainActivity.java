@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
             } else if (spokendata.get(0).equalsIgnoreCase("Engine Failure")) {
                 toSpeech.speak("Ok follow the procedures", TextToSpeech.QUEUE_FLUSH, null);
                 procedures();
+            } else if (spokendata.get(0).equalsIgnoreCase("Oil Gauge Fault")) {
+                toSpeech.speak("Procedures are on preparation", TextToSpeech.QUEUE_FLUSH, null);
             } else {
                 toSpeech.speak("Sorry...Never heard ur problem", TextToSpeech.QUEUE_FLUSH, null);
                 Toast.makeText(getApplicationContext(), "Sorry...Never heard ur problem", Toast.LENGTH_LONG).show();
