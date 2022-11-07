@@ -15,9 +15,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/gosling" />
+        android:contentDescription="Image background" />
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="311dp"
         android:layout_height="wrap_content"
         android:layout_x="17dp"
@@ -26,13 +26,13 @@
         <EditText
             android:id="@+id/editText3"
             android:layout_width="match_parent"
-            android:textColor="#ffffff"
+            android:textColor="#000000"
             android:layout_height="wrap_content"
             android:hint="State your car problem" />
 
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/speakproblem"
         android:layout_width="wrap_content"
         android:layout_height="57dp"
@@ -42,6 +42,7 @@
         android:clickable="true"
         app:backgroundTint="@android:color/background_light"
         app:fabSize="mini"
+        app:layout_anchor="@id/speakproblem"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintLeft_toRightOf="@+id/imageView2"
         app:layout_constraintRight_toLeftOf="@+id/imageView2"

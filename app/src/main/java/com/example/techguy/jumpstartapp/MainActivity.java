@@ -1,18 +1,20 @@
 package com.example.techguy.jumpstartapp;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -29,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        speakproblem = (FloatingActionButton) findViewById(R.id.speakproblem);
-        bjumpstart = (Button) findViewById(R.id.button);
+        speakproblem = findViewById(R.id.speakproblem);
+        bjumpstart = findViewById(R.id.button);
         toSpeech = new TextToSpeech(MainActivity.this, new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
@@ -72,12 +74,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if ((requestCode == 100) && (data != null) && (resultCode == RESULT_OK)) {
             ArrayList<String> spokendata = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             //toSpeech.speak(spokendata.get(0), TextToSpeech.QUEUE_FLUSH, null);
 
             if (spokendata.get(0).equalsIgnoreCase("Hello")) {
-                toSpeech.speak("Tech Guy", TextToSpeech.QUEUE_FLUSH, null);
+                toSpeech.speak("Hello How are you doing today", TextToSpeech.QUEUE_FLUSH, null);
                 Toast.makeText(getApplicationContext(), spokendata.get(0), Toast.LENGTH_LONG).show();
             } else if (spokendata.get(0).equalsIgnoreCase("Have a problem")) {
                 toSpeech.speak("Yes am listening how may I help u", TextToSpeech.QUEUE_FLUSH, null);
@@ -98,25 +101,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void jumpstart() {
-        editText = (EditText) findViewById(R.id.editText3);
+        editText = findViewById(R.id.editText3);
         String text = editText.getText().toString();
         if (text.equalsIgnoreCase("Hello")) {
-            toSpeech.speak("Tech Guy", TextToSpeech.QUEUE_FLUSH, null);
+            toSpeech.speak("Hello How are you doing today", TextToSpeech.QUEUE_FLUSH, null);
             Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
         } else if (text.equalsIgnoreCase("Have a problem")) {
             toSpeech.speak("Yes am listening how may I help u", TextToSpeech.QUEUE_FLUSH, null);
             Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
-        }else if (text.equalsIgnoreCase("Hello JumpStart")) {
+        } else if (text.equalsIgnoreCase("Hello JumpStart")) {
             toSpeech.speak("Hello...How May I Help You Fix Your Vehicle", TextToSpeech.QUEUE_FLUSH, null);
             Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
         } else if (text.equalsIgnoreCase("Engine Failure")) {
             toSpeech.speak("Ok follow the procedures", TextToSpeech.QUEUE_FLUSH, null);
             procedures();
         } else if (text.equalsIgnoreCase("")) {
-            toSpeech.speak("Sorry...Please Write Your Vehicle Problem", TextToSpeech.QUEUE_FLUSH, null);
+            toSpeech.speak("Sorry... Please Write Your Vehicle Problem", TextToSpeech.QUEUE_FLUSH, null);
             Toast.makeText(getApplicationContext(), "Please Write Your Vehicle Problem", Toast.LENGTH_LONG).show();
         } else {
-            toSpeech.speak("Sorry...We never got a solution to that", TextToSpeech.QUEUE_FLUSH, null);
+            toSpeech.speak("Sorry... We never got a solution to that", TextToSpeech.QUEUE_FLUSH, null);
             Toast.makeText(getApplicationContext(), "We never got a solution to that", Toast.LENGTH_LONG).show();
         }
     }
@@ -124,10 +127,10 @@ public class MainActivity extends AppCompatActivity {
     public void procedures() {
         AlertDialog.Builder bud = new AlertDialog.Builder(MainActivity.this);
         bud.setMessage("How to troubleshoot Car Engine !!!" + "\n" + "\n" +
-                "Check on your car battery charge voltage" + "\n" +
-                "Check on your starter" + "\n" +
-                "Check the fuel gauge" + "\n" +
-                "Check for water temperatures")
+                        "Check on your car battery charge voltage" + "\n" +
+                        "Check on your starter" + "\n" +
+                        "Check the fuel gauge" + "\n" +
+                        "Check for water temperatures")
                 .setCancelable(false)
                 .setPositiveButton("next", new DialogInterface.OnClickListener() {
                     @Override
@@ -155,9 +158,7 @@ public class MainActivity extends AppCompatActivity {
                         alert.show();
                     }
                 });
-        AlertDialog alert = bud.create();
-        alert.setTitle("JumpStart");
-        alert.show();
+        bud.create();
     }
 
     @Override
